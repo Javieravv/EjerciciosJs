@@ -1,0 +1,146 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Yusei Magic', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #434343;
+  perspective: 800px; /* nueva propiedad */
+}
+
+.box {
+  width: 32%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  border-radius: 20px;
+  position: relative;
+  box-shadow: 0px 0px 50px -12px #4affaf;
+}
+
+.the-force-box {
+  position: absolute;
+  top: 0;
+  left: -310px;
+  display: flex;
+  pointer-events: none;
+}
+
+.the-force-box p {
+  font-size: 2rem;
+  color: #5a5757;
+  text-transform: uppercase;
+}
+
+.the-force-box img {
+  width: 10rem;
+  position: relative;
+  top: 5px;
+}
+
+.card {
+   transform-style: preserve-3d;
+   min-height: 80vh;
+   width: 32rem;
+   border-radius: 30px;
+   padding: 0rem 5rem
+}
+
+.card-character {
+  min-height: 35vh;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-character-bg {
+  width: 15rem;
+  height:15rem;
+  background: linear-gradient(
+    to right,
+    rgba(175,93,12,0.75),
+    rgba(56,156,94,0.75)
+  );
+  position: absolute;
+  border-radius: 50%; 
+  z-index: 1;
+}
+
+.card-character-img {
+  width: 18rem;
+  z-index: 2;
+  transition: all 0.75 ease-out;
+}
+
+.card-info {}
+
+.card-info-title {
+  font-size: 3rem;
+  transition: all 0.75 ease-out;
+}
+
+.card-info-subtitle {
+  font-size: 1.3em;
+  padding: 2rem 0rem;
+  color: #585858;
+  font-weight: lighter;
+  transition: all 0.75 ease-out;
+}
+
+.card-info-seasons {
+  display: flex;
+  justify-content: space-between;
+  transition: all 0.75 ease-out;
+}
+
+.card-info-seasons button {
+  padding: 0.5rem 2rem;
+  background: none;
+  border: none;
+  box-shadow: 0px 5px 10px rgba(0,0,0.2);
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #585858;
+  transition: 0.3s all ease;
+}
+
+.card-info-seasons button:hover {
+  background: #585858;
+  color: white;
+}
+
+button.active {
+  background: #585858;
+  color: white;
+}
+
+.card-button {
+  margin-top: 5rem;
+  transition: all 0.75 ease-out;
+}
+
+.card-button button {
+  width: 100%;
+  padding: 1rem 0rem;
+  background: #8b5b20;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 30px;
+  font-weight: bold;
+  transition: 0.3s all ease;
+}
+
+.card-button button:hover {
+  color: white;
+  background: #df8f2e;
+
+}
