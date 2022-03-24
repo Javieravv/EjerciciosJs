@@ -6,6 +6,8 @@ const userList = document.querySelector('#userList')
 const cardSkeleton = document.querySelector('#cardSkeleton')
 const cardTemplate = document.querySelector('#cardTemplate')
 
+// cuando se usa addEventListener siempre enviará un evento como parámetro
+
 loadUsersBtn.addEventListener('click', getUsersData)
 userList.addEventListener('click', filterEventByButtonClicked)
 
@@ -13,13 +15,12 @@ function filterEventByButtonClicked (event) {
   if (event.target.className.includes('cardBtn')) {
     const parentNode = event.target.parentNode
     const user = JSON.parse(parentNode.getAttribute('data-user'))
-    console.log ({user})
     showModalWithUserData(user)
   }
 }
 
 
-function showModalWithUserData (user) {
+const showModalWithUserData = (user) => {
   const {avatar, email, first_name, id, last_name} = user
   // Se usa una libreía para mostrar un modal, la cual ya está enlazada en el HTML
 
@@ -40,18 +41,16 @@ function getUsersData () {
   printSkeleton(6)
   asyncFetching()
   .then((data) => {
-    console.log (data)
     printNumberOfUsers(data)
     userList.innerHTML = ""
     printUsersData (data)
   }).catch ((err) => {
-    console.log ('ERROR...', err)
     showToastWithError (err)
 
   })
 }
 
-function showToastWithError (err) {
+const showToastWithError = (err) => {
   const Toast = Swal.mixin ({
     toast: true,
     position: 'botton',
@@ -70,7 +69,7 @@ function showToastWithError (err) {
   })
 }
 
-function printSkeleton(numberOfSkeleton) {
+const printSkeleton = (numberOfSkeleton) => {
   const skeletonArr = [...Array(numberOfSkeleton).keys()]
   skeletonArr.forEach(() => {
     const skeletonContent = cardSkeleton.content.cloneNode(true)
@@ -78,9 +77,9 @@ function printSkeleton(numberOfSkeleton) {
   })
 }
 
-function printUsersData (data) {
+const printUsersData = (data) => {
   data.forEach ((user) => {
-    const {avatar, email, first_name, id, last_name} = user
+    const {avatar,first_name, last_name} = user
     const cardContent = cardTemplate.content.cloneNode(true)
     const avatarImg = cardContent.querySelector('#avatarImg')
     const firstName = cardContent.querySelector('#firstName')
@@ -96,11 +95,11 @@ function printUsersData (data) {
   })
 }
 
-function printNumberOfUsers(data) {
+const printNumberOfUsers = (data) => {
   usersNumber.innerHTML = data.length
 }
 
-function toggleContactBox() {
+const toggleContactBox = () => {
   contactBox.classList.toggle('hidden')
   loadUsersBox.classList.toggle('hidden')
 }
@@ -112,14 +111,12 @@ function toggleContactBox() {
 //   .then ((data) => console.log(data))
 
 const asyncFetching = async () => {
-  const response = await fetch('https://reqres.in/api/users?delay=2')
+  const response = await fetch('https://reqres.in/api/users?delay=1')
 
   if (response.status !== 200) {
     throw new Error ('No fue posible traer los datos...')    
   }
-
   const { data } = await response.json()
-  // console.log ('DATOS...', data)
   return data 
 }
 
