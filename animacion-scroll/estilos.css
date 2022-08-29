@@ -12,6 +12,11 @@ p {
     font-size: 1.5rem;
 }
 
+h1 {
+    text-align: center;
+    font-size: 3rem;
+}
+
 .contadores_principales {
     padding: 25px 0;
     display: grid;
@@ -63,3 +68,16 @@ p {
     animation: aparecer 2.0s;
 }
 
+.parrafo {
+    transition: background-color 1.5s ease-in;
+    transition: padding 0.5s ease-out;
+}
+
+.parrafo_oculto {
+    background-color: rgb(101, 227, 244);
+}
+
+.cambio-parrafo-oculto {
+    background-color: rgba(59, 243, 59, 0.837);
+    padding: 10px 10px;
+}

@@ -23,10 +23,19 @@ addEventListener ('DOMContentLoaded', () => {
         // console.log (elementos)
         elementos.forEach( elemento => {
             if ( elemento.isIntersecting ) {
-                console.log (elemento)
                 elemento.target.classList.add('animar')
                 elemento.target.classList.remove('ocultar')
                 setTimeout ( animarContadores, 300)
+            }
+        })
+    }
+
+    const mostrarParrafo = parrafos => {
+        console.log ('VAMOS EN EL PARRAFO....',parrafos)
+        parrafos.forEach( parrafo => {
+            if ( parrafo.isIntersecting ) {
+                parrafo.target.classList.add('cambio-parrafo-oculto')
+                parrafo.target.classList.remove('parrafo-oculto')
             }
         })
     }
@@ -37,6 +46,10 @@ addEventListener ('DOMContentLoaded', () => {
         threshold: 0.75 
     })
 
+    const observer1 = new IntersectionObserver (mostrarParrafo, {
+        threshold: 0.75
+    })
+
     // elementos que el observer necesita ver
     const elementosHTML = document.querySelectorAll('.contador')
     // console.log ( elementosHTML )
@@ -44,5 +57,9 @@ addEventListener ('DOMContentLoaded', () => {
         observer.observe(elementoHtml)
     })
 
+    const parrafosOcultos = document.querySelectorAll('.parrafo_oculto')
+    parrafosOcultos.forEach ( parrafo => {
+        observer1.observe ( parrafo )
+    })
 
 })
